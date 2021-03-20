@@ -27,7 +27,7 @@ export default class YouTubeDailyPage extends Component {
     return (
       <Layout title={page?.title}>
         <div className="leading-10 mb-4">
-          <h1 className="font-bold text-3xl">{'Youtube Official and FanCam'}</h1>
+          <h1 className="font-bold text-3xl">{'YouTube Official and FanCam'}</h1>
         </div>
         <If condition={isEmpty(videos)}>
           <Then>
