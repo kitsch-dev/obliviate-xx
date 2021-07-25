@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: 'https://api.jsonbin.io'
+  baseURL: 'https://lumo.vercel.app'
 })

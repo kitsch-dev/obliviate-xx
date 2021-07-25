@@ -18,7 +18,7 @@ export default class MelonDailyPage extends Component {
   }
 
   componentDidMount() {
-    store.get('/b/5ffdc4f368f9f835a3de4718/latest').then(({ data }) => this.setState(data))
+    store.get('/b/kzws2arEhg').then(({ data }) => this.setState(data))
   }
 
   render() {

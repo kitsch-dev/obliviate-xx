@@ -16,8 +16,8 @@ export default class YouTubeDailyPage extends Component {
   }
 
   componentDidMount() {
-    store.get('/b/5ffea24768f9f835a3de98d6/latest').then(({ data: official }) => this.setState({ official }))
-    store.get('/b/5ffeb153f98f6e35d5fbf31f/latest').then(({ data: fancam }) => this.setState({ fancam }))
+    store.get('/b/cQ1upQRufO').then(({ data: official }) => this.setState({ official }))
+    store.get('/b/3F74qXVfQR').then(({ data: fancam }) => this.setState({ fancam }))
   }
 
   render() {

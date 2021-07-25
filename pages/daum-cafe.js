@@ -20,9 +20,9 @@ export default class DaumCafePage extends Component {
   }
 
   componentDidMount() {
-    store.get('/b/600066264f42973a289cde3b/latest').then(({ data }) => this.setState(data))
-    store.get('/b/5ffeb19868f9f835a3de9e26/latest').then(({ data }) => this.setState(data))
-    store.get('/b/6000668ff98f6e35d5fc791b/latest').then(({ data }) => this.setState(data))
+    store.get('/b/7tuyHDi2GI').then(({ data }) => this.setState(data))
+    store.get('/b/PKNc04J9Yb').then(({ data }) => this.setState(data))
+    store.get('/b/mqnvh8vnjj').then(({ data }) => this.setState(data))
   }
 
   render() {
