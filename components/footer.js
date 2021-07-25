@@ -1,4 +1,4 @@
-export default ({ author, homepage }) => {
+export default function Footer({ author, homepage }) {
   return (
     <footer>
       <div className="container mx-auto p-5">

@@ -15,7 +15,7 @@ export default class FirstWeekPage extends Component {
   }
 
   componentDidMount() {
-    store.get('/b/6001b1904f42973a289d4e56/latest').then(({ data: albums }) => this.setState({ albums }))
+    store.get('/b/qkpE9QMFaE').then(({ data: albums }) => this.setState({ albums }))
   }
 
   render() {

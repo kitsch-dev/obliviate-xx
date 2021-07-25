@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from './header'
 import Footer from './footer'
 
-export default ({ title, children }) => {
+export default function Layout({ title, children }) {
   return (
     <>
       <Head>

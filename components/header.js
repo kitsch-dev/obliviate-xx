@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default ({ logo }) => {
+export default function Header({ logo }) {
   return (
     <header>
       <div className="container mx-auto p-5">
