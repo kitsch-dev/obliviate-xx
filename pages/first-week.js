@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { If, Then, Else } from 'react-if'
 import isEmpty from 'lodash/isEmpty'
+import BarChart from '../components/albums/bar'
 import Layout from '../components/layout'
-import Chart from '../components/chart'
 import store from '../utils/store'
 import site from '../utils/site'
 
@@ -10,25 +10,23 @@ export default class FirstWeekPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      albums: []
+      albums: {},
+      items: []
     }
   }
 
   componentDidMount() {
-    store.get('/b/qkpE9QMFaE').then(({ data: albums }) => this.setState({ albums }))
+    store.get('/b/qkpE9QMFaE').then(({ data: albums }) => {
+      const items = Object.keys(albums).map(id => {
+        return { id, value: albums[id][2] }
+      })
+      this.setState({ albums, items })
+    })
   }
 
   render() {
     const page = site.page('first-week')
-    const categories = this.state.albums.map(({ album }) => album)
-    const colors = this.state.albums.map(({ color }) => color)
-    const series = [
-      {
-        name: 'Sales',
-        data: this.state.albums.map(({ count }) => count)
-      }
-    ]
-
+    const { albums, items } = this.state
     return (
       <Layout title={page?.title}>
         <div className="leading-10 mb-4">
@@ -41,33 +39,7 @@ export default class FirstWeekPage extends Component {
             </div>
           </Then>
           <Else>
-            <Chart type="bar" height="460px" series={series} options={{
-              chart: {
-                toolbar: { show: false },
-                zoom: { enabled: false }
-              },
-              xaxis: {
-                categories,
-                labels: {
-                  style: {
-                    colors
-                  }
-                }
-              },
-              colors,
-              tooltip: {
-                theme: 'dark'
-              },
-              dataLabels: {
-                enabled: false
-              },
-              plotOptions: {
-                bar: {
-                  distributed: true,
-                  columnWidth: '25%'
-                }
-              }
-            }} />
+            <BarChart albums={albums} items={items} height="460px" />
           </Else>
         </If>
       </Layout>
