@@ -15,7 +15,7 @@ export default function Line({ items, height }) {
         }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear' }}
-        margin={{ left: 57, top: 32, right: 12, bottom: 72 }}
+        margin={{ left: 57, top: 32, right: 12, bottom: 76 }}
         enableSlices={'x'}
         enableGridX={false} />
     </div>

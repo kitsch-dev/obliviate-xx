@@ -10,7 +10,7 @@ import site from '../utils/site'
 const isoDateRange = date.dateRange(-9, 1)
 
 function parseCount(value) {
-  return parseInt(value ? value.replace(/,/g, '') : null)
+  return value ? parseInt(value.replace(/,/g, '')) : null
 }
 
 export default class DaumCafePage extends Component {

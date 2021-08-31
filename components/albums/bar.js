@@ -17,8 +17,8 @@ export default function Bar({ albums, items, height }) {
           tickRotation: -45,
           renderTick: renderTick({ albums })
         }}
-        margin={{ left: 57, top: 32, right: 12, bottom: 132 }}
-        padding={0.7}
+        margin={{ left: 57, top: 32, right: 12, bottom: 101 }}
+        padding={0.6}
         gridYValues={5}
         maxValue={80000}
         tooltip={renderTooltip({ albums })}

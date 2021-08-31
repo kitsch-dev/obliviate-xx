@@ -1,77 +1,67 @@
 import React, { Component } from 'react'
 import { If, Then, Else } from 'react-if'
 import isEmpty from 'lodash/isEmpty'
+import Line from '../components/melon/line'
 import Layout from '../components/layout'
-import Chart from '../components/chart'
 import store from '../utils/store'
 import date from '../utils/date'
 import site from '../utils/site'
 
 const isoDateRange = date.dateRange(-7, 0)
 
+function parseCount(value) {
+  return value ? parseInt(value[2]) : null
+}
+
 export default class MelonDailyPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      daily: {}
+      '이루리': {},
+      'UNNATURAL': {}
     }
   }
 
   componentDidMount() {
-    store.get('/b/kzws2arEhg').then(({ data }) => this.setState(data))
+    Promise.all([
+      store.get('/b/kzws2arEhg'),
+      store.get('/b/KiHUNpZCbx')
+    ]).then(response => {
+      this.setState({
+        '이루리': response[0].data.daily,
+        'UNNATURAL': response[1].data.daily
+      })
+    })
   }
 
   render() {
+    const keys = Object.keys(this.state)
     const page = site.page('melon-daily')
-    const series = [0, 2].map((item, index) => {
-      return {
-        name: ['排名', '收听人数'][index],
-        data: isoDateRange.map(date => {
-          return this.state.daily[date] ? this.state.daily[date][item] : null
-        })
-      }
-    })
+    const items = keys.map(name => ({
+      id: name,
+      data: isoDateRange.map(date => {
+        return {
+          x: date,
+          y: parseCount(this.state[name][date])
+        }
+      })
+    }))
 
+    const isLoading = isEmpty(this.state['이루리']) ||
+                      isEmpty(this.state['UNNATURAL'])
     return (
       <Layout title={page?.title}>
         <div className="leading-10 mb-4">
           <h1 className="font-bold text-3xl">{'As You Wish'}</h1>
         </div>
-        <If condition={isEmpty(this.state.daily)}>
+        <If condition={isLoading}>
           <Then>
             <div className="flex items-center justify-center h-56">
               <span className="loading fish"></span>
             </div>
           </Then>
           <Else>
-            <Chart type="line" height="460px" series={series} options={{
-              chart: {
-                toolbar: { show: false },
-                zoom: { enabled: false }
-              },
-              yaxis: [
-                {
-                  min: 1,
-                  max: 1000,
-                  reversed: true
-                },
-                {
-                  opposite: true
-                }
-              ],
-              colors: [
-                '#34d399',
-                '#60a5fa'
-              ],
-              labels: isoDateRange,
-              stroke: {
-                width: [3, 3, 3],
-                curve: 'straight'
-              },
-              tooltip: {
-                theme: 'dark'
-              }
-            }} />
+            <Line items={items} height="460px" />
           </Else>
         </If>
       </Layout>
