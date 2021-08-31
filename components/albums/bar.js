@@ -2,7 +2,7 @@ import { ResponsiveBar } from '@nivo/bar'
 import renderTooltip from './tooltip'
 import renderTick from './tick'
 
-export default function BarChart({ albums, items, height }) {
+export default function Bar({ albums, items, height }) {
   return (
     <div style={{ height }}>
       <ResponsiveBar
@@ -17,7 +17,7 @@ export default function BarChart({ albums, items, height }) {
           tickRotation: -45,
           renderTick: renderTick({ albums })
         }}
-        margin={{ left: 50, top: 50, right: 50, bottom: 115 }}
+        margin={{ left: 57, top: 32, right: 12, bottom: 132 }}
         padding={0.7}
         gridYValues={5}
         maxValue={80000}

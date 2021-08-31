@@ -6,8 +6,8 @@ const style = {
     strokeWidth: 1
   },
   text: {
-    fontFamily: 'JetBrains Mono',
-    fontWeight: 900,
+    fontFamily: 'IBM Plex Sans Condensed',
+    fontWeight: 700,
     fontSize: 13
   }
 }
