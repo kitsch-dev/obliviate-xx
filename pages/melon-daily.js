@@ -7,7 +7,7 @@ import store from '../utils/store'
 import date from '../utils/date'
 import site from '../utils/site'
 
-const isoDateRange = date.dateRange(-7, 0).map(date => date.replace(/\-/g, '.'))
+const isoDateRange = date.dateRange(-7, 0)
 
 export default class MelonDailyPage extends Component {
   constructor(props) {

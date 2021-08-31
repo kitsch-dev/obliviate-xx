@@ -7,6 +7,7 @@ function dateRange(...args) {
   return range(...args)
     .map(item => date + item * 86_400_000)
     .map(date => dateFormat(date, 'isoDate'))
+    .map(date => date.replace(/\-/g, '.'))
 }
 
 export default { dateRange }

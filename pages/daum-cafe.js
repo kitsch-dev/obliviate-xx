@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { If, Then, Else } from 'react-if'
 import isEmpty from 'lodash/isEmpty'
+import Line from '../components/fancafe/line'
 import Layout from '../components/layout'
-import Chart from '../components/chart'
 import store from '../utils/store'
 import date from '../utils/date'
 import site from '../utils/site'
 
-const isoDateRange = date.dateRange(-6, 1)
+const isoDateRange = date.dateRange(-9, 1)
+
+function parseCount(value) {
+  return parseInt(value ? value.replace(/,/g, '') : null)
+}
 
 export default class DaumCafePage extends Component {
   constructor(props) {
@@ -28,11 +32,13 @@ export default class DaumCafePage extends Component {
   render() {
     const keys = Object.keys(this.state)
     const page = site.page('daum-cafe')
-    const series = keys.map(name => ({
-      name,
+    const items = keys.map(name => ({
+      id: name,
       data: isoDateRange.map(date => {
-        const count = this.state[name][date]
-        return count ? count.replace(/,/g, '') : null
+        return {
+          x: date,
+          y: parseCount(this.state[name][date])
+        }
       })
     }))
 
@@ -51,20 +57,7 @@ export default class DaumCafePage extends Component {
             </div>
           </Then>
           <Else>
-            <Chart type="line" height="460px" series={series} options={{
-              chart: {
-                toolbar: { show: false },
-                zoom: { enabled: false }
-              },
-              labels: isoDateRange,
-              stroke: {
-                width: [3, 3, 3],
-                curve: 'straight'
-              },
-              tooltip: {
-                theme: 'dark'
-              }
-            }} />
+            <Line items={items} height="460px" />
           </Else>
         </If>
       </Layout>
