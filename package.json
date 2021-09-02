@@ -26,7 +26,8 @@
     "react-if": "^4.0.1",
     "round-to": "^5.0.0",
     "tailwindcss": "^2.0.2",
-    "text-spinners": "^1.0.5"
+    "text-spinners": "^1.0.5",
+    "tinykeys": "^1.2.0"
   },
   "devDependencies": {
     "surge": "^0.21.7"
