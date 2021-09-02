@@ -5,8 +5,8 @@ function renderBarComponent({ options }) {
   return function BarComponent({
     style: {
       transform,
-      width,
-      height
+      height,
+      width
     },
     bar
   }) {
@@ -42,7 +42,7 @@ export default function RaceBar({ items, options }) {
     <Bar
       data={items}
       width={1600}
-      height={900}
+      height={999}
       axisLeft={null}
       axisTop={{ format: '~s' }}
       axisBottom={{ format: '~s' }}

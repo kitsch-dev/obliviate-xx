@@ -56,11 +56,11 @@ class QueryComponent extends Component {
     return (
       <>
         <RaceBar items={items} options={options} />
-        <div style={{
+        <div className="fixed right-0 bottom-0 p-10" style={{
           fontFamily: 'Monoid',
           fontSize: '2.5rem',
           color: '#002f6c'
-        }} className="fixed right-0 bottom-0 p-10">
+        }}>
           <span>{dateTag}</span>
         </div>
       </>
