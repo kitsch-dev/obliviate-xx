@@ -16,7 +16,7 @@ function YouTubeComponent({
       </div>
       <div className="flex space-x-3 h-10">
         <span className="font-mono leading-10 text-gray-500">{viewCount} 次观看</span>
-        <span className="font-mono leading-10 text-gray-500">{round(Number(likeCount) / (Number(likeCount) + Number(dislikeCount)) * 100, 1)}%</span>
+        <span className="font-mono leading-10 text-gray-500">{likeCount} 赞</span>
       </div>
     </div>
   )
