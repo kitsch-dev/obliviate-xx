@@ -1,5 +1,7 @@
+import resource from './resource'
+
 function src(ident) {
-  return `https://assets-zeta.vercel.app/albums/${ident}.jpg`
+  return `https://p1.music.126.net/${resource[ident]}.jpg?param=460y460`
 }
 
 function preload(ident) {
