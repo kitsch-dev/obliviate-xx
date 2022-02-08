@@ -12,7 +12,7 @@ export default function Layout({ title, children }) {
       <main>
         <div className="container mx-auto p-5">{children}</div>
       </main>
-      <Footer author="soobly_s2" homepage="https://github.com/soobly-s2" />
+      <Footer author="Vercel" homepage="https://vercel.com" />
     </>
   )
 }
